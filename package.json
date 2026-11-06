@@ -18,5 +18,8 @@
     "docx": "^9.15.2",
     "esbuild": "^0.28.2",
     "tailwindcss": "^4.3.4"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
   }
 }
