@@ -81,8 +81,6 @@ mitema/
 ├── docs/
 │   ├── Fauna-del-Velazco-Proyecto.docx
 │   └── assets/                # PNG de logo para el documento
-├── scripts/
-│   └── build-docx.mjs         # Generador del documento Word
 ├── languages/                 # Traducciones
 ├── INIT.md                    # Plan completo, fases y flujo de reserva
 └── AGENTS.md                  # Reglas para agentes y desarrolladores
