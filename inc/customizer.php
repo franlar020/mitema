@@ -45,7 +45,7 @@ function fv_customize_register( WP_Customize_Manager $wp_customize ): void {
 		'fv_address'     => array(
 			'label'    => __( 'Dirección', 'fauna-del-velazco' ),
 			'type'     => 'text',
-			'default'  => __( 'Plaza José María Velazco Ibarra, barrio de Balvanera (Comuna 3), Ciudad Autónoma de Buenos Aires. Entre Av. Jujuy, calle México, calle Saavedra y Av. Independencia. Espacio público tradicional con áreas de juegos infantiles y sectores deportivos renovados.', 'fauna-del-velazco' ),
+			'default'  => __( 'Plaza José María Velazco Ibarra, barrio de Balvanera (Comuna 3), Ciudad Autónoma de Buenos Aires. Entre Av. Jujuy, calle México, calle Saavedra y Av. Independencia.', 'fauna-del-velazco' ),
 			'sanitize' => 'sanitize_text_field',
 		),
 		'fv_hours'       => array(
