@@ -136,7 +136,7 @@ content.push(
   new Paragraph({
     alignment: AlignmentType.CENTER,
     spacing: { after: 100 },
-    children: [textRun('Instrucciones para buscar y cargar imágenes de perros', { size: 22, color: C.terracottaSoft })],
+    children: [textRun('Instrucciones para buscar y cargar imágenes de perros', { size: 22, color: C.terracottaInk })],
   }),
   new Paragraph({
     alignment: AlignmentType.CENTER,
