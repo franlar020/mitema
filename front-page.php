@@ -40,7 +40,7 @@ get_header();
 				<div class="mt-10">
 					<img
 						class="aspect-[4/5] w-full rounded-[2rem] border border-forest/15 bg-cream p-6 shadow-soft object-cover sm:p-8"
-						src="https://sulfite-delouse-daringly.ngrok-free.dev/webwordpress/wp-content/uploads/2026/11/foto2.jpg"
+						src="/wp-content/uploads/2026/11/foto2.jpg"
 						alt="Foto real de mascota para el hero de Fauna del Velazco"
 						loading="lazy"
 						decoding="async"
