@@ -1,0 +1,20 @@
+/*
+Theme Name: Fauna del Velazco
+Theme URI: https://faunadelvelazco.com.ar
+Author: Fauna del Velazco
+Author URI: https://faunadelvelazco.com.ar
+Description: Tema a medida para la clínica veterinaria Fauna del Velazco. Tienda WooCommerce, reservas de turnos y perfiles de mascotas.
+Version: 0.1.0
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: fauna-del-velazco
+Tags: custom-logo, custom-menu, featured-images, translation-ready, woocommerce
+*/
+
+/*
+ * Los estilos del frontend se compilan desde assets/src/css/app.css
+ * y se encolan desde inc/enqueue.php.
+ */

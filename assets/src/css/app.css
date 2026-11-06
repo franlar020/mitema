@@ -1,0 +1,589 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/fraunces-latin-standard-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/fraunces-latin-standard-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("../fonts/manrope-latin-wght-normal.woff2") format("woff2");
+}
+
+@source "../../../**/*.php";
+@source "../../js/**/*.js";
+
+@theme {
+  --color-forest: #1f3d2b;
+  --color-forest-soft: #2f5a40;
+  --color-forest-deep: #142a1d;
+  --color-cream: #f7f3e8;
+  --color-cream-dark: #efe8d8;
+  --color-paper: #fbf8f0;
+  --color-terracotta: #c4704f;
+  --color-terracotta-ink: #a85638;
+  --color-terracotta-soft: #e2a487;
+  --color-sage: #8fa98f;
+  --color-sage-soft: #c5d3c3;
+  --color-charcoal: #222222;
+
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-fv: 1.25rem;
+  --shadow-fv: 0 24px 48px -24px rgb(31 61 43 / 0.28);
+  --shadow-soft: 0 12px 30px -18px rgb(31 61 43 / 0.22);
+}
+
+@layer base {
+  :root {
+    --fv-header-height: 5.5rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--fv-header-height) + 1rem);
+  }
+
+  body {
+    @apply bg-cream font-sans text-charcoal antialiased;
+    background-image: radial-gradient(circle at 1px 1px, rgb(31 61 43 / 0.045) 1px, transparent 0);
+    background-size: 26px 26px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-medium tracking-tight text-forest;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    @apply underline-offset-4;
+  }
+
+  ::selection {
+    @apply bg-terracotta text-cream;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 3px;
+  }
+
+  img,
+  svg {
+    display: block;
+  }
+
+  body.fv-menu-open {
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .fv-animate-in {
+      animation: none;
+    }
+  }
+}
+
+@layer components {
+  .fv-container {
+    @apply mx-auto w-full max-w-[86rem] px-5 sm:px-8 lg:px-10;
+  }
+
+  .fv-section {
+    @apply py-20 sm:py-28;
+  }
+
+  .fv-eyebrow {
+    @apply text-[0.68rem] font-bold uppercase tracking-[0.24em] text-terracotta-ink;
+  }
+
+  .fv-display {
+    @apply font-display font-medium tracking-[-0.035em] text-forest;
+    font-size: clamp(2.9rem, 7.4vw, 6.8rem);
+    line-height: 0.92;
+  }
+
+  .fv-display--md {
+    font-size: clamp(2.1rem, 4.4vw, 4.1rem);
+    line-height: 0.98;
+  }
+
+  .fv-display--sm {
+    font-size: clamp(1.7rem, 3vw, 2.7rem);
+    line-height: 1.05;
+  }
+
+  .fv-display--light {
+    @apply text-cream;
+  }
+
+  .fv-lead {
+    @apply max-w-2xl text-base leading-relaxed text-forest/70 sm:text-lg;
+  }
+
+  .fv-lead--light {
+    @apply text-cream/70;
+  }
+
+  .fv-btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold no-underline transition duration-300;
+  }
+
+  .fv-btn svg {
+    @apply h-4 w-4;
+  }
+
+  .fv-btn--primary {
+    @apply bg-forest text-cream shadow-soft hover:bg-forest-soft;
+  }
+
+  .fv-btn--terracotta {
+    @apply bg-terracotta-ink text-cream hover:bg-forest;
+  }
+
+  .fv-btn--ghost {
+    @apply border border-forest/20 text-forest hover:border-forest hover:bg-forest hover:text-cream;
+  }
+
+  .fv-btn--light {
+    @apply bg-cream text-forest hover:bg-sage-soft;
+  }
+
+  .fv-link-arrow {
+    @apply inline-flex items-center gap-2 text-sm font-semibold text-forest no-underline;
+  }
+
+  .fv-link-arrow svg {
+    @apply h-4 w-4 transition-transform duration-300;
+  }
+
+  .fv-link-arrow:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  .fv-rule {
+    @apply border-t border-forest/15;
+  }
+
+  .fv-surface {
+    @apply border border-forest/10 bg-paper/80 backdrop-blur-sm;
+  }
+
+  .fv-arch {
+    border-radius: 999px 999px 1.5rem 1.5rem;
+  }
+
+  .fv-detail {
+    @apply border-l border-forest/15 pl-6;
+  }
+
+  .fv-skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-forest focus:px-5 focus:py-3 focus:text-cream;
+  }
+
+  .fv-topbar {
+    @apply border-b border-cream/10 bg-forest text-cream/80;
+  }
+
+  .fv-topbar a {
+    @apply text-cream no-underline hover:text-sage-soft;
+  }
+
+  .fv-header {
+    @apply sticky top-0 z-40 border-b border-forest/10 bg-cream/95 backdrop-blur;
+  }
+
+  .fv-logo img {
+    @apply h-10 w-auto sm:h-12;
+  }
+
+  .fv-nav ul {
+    @apply flex items-center gap-7;
+  }
+
+  .fv-nav li {
+    @apply list-none;
+  }
+
+  .fv-nav a {
+    @apply text-sm font-semibold text-forest/70 no-underline transition hover:text-forest;
+  }
+
+  .fv-nav .current-menu-item > a,
+  .fv-nav .current_page_item > a {
+    @apply text-forest;
+  }
+
+  .fv-nav--mobile ul {
+    @apply flex flex-col items-stretch gap-0;
+  }
+
+  .fv-nav--mobile a {
+    @apply block border-b border-forest/10 py-4 text-lg;
+  }
+
+  .fv-nav--mobile li:last-child a {
+    @apply border-b-0;
+  }
+
+  .fv-mobile-menu {
+    @apply border-t border-forest/10 bg-cream;
+  }
+
+  .fv-menu-toggle {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-forest/15 text-forest;
+  }
+
+  .fv-hero {
+    @apply relative overflow-hidden pb-20 pt-16 sm:pb-28 sm:pt-24;
+  }
+
+  .fv-hero__grid {
+    @apply grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr];
+  }
+
+  .fv-hero__visual {
+    @apply relative mx-auto flex min-h-[22rem] w-full max-w-md items-center justify-center sm:min-h-[28rem];
+  }
+
+  .fv-hero__disc {
+    @apply absolute inset-x-0 top-1/2 mx-auto aspect-square w-[19rem] -translate-y-1/2 rounded-full bg-forest-soft/10 sm:w-[25rem];
+  }
+
+  .fv-hero__mark {
+    @apply relative z-10 w-44 rounded-full shadow-fv sm:w-56;
+  }
+
+  .fv-hero__branch {
+    @apply absolute -right-2 top-2 h-56 w-auto text-sage/70 sm:-right-6 sm:h-72;
+  }
+
+  .fv-hero__note {
+    @apply absolute bottom-4 left-0 z-20 w-48 border border-forest/15 bg-paper p-4 shadow-soft sm:-left-4 sm:bottom-8;
+  }
+
+  .fv-trust {
+    @apply border-y border-forest/15 bg-paper/60;
+  }
+
+  .fv-trust__item {
+    @apply grid gap-3 py-6 sm:grid-cols-[auto_1fr] sm:items-start;
+  }
+
+  .fv-service-row {
+    @apply grid gap-4 border-t border-forest/15 py-7 sm:grid-cols-[3.5rem_1fr_auto] sm:items-start;
+  }
+
+  .fv-service-row:last-child {
+    @apply border-b;
+  }
+
+  .fv-service-row__icon {
+    @apply flex h-11 w-11 items-center justify-center rounded-full border border-forest/15 text-forest transition group-hover:border-terracotta group-hover:text-terracotta;
+  }
+
+  .fv-service-row h3 {
+    @apply text-2xl;
+  }
+
+  .fv-service-row p {
+    @apply mt-2 max-w-lg text-sm leading-relaxed text-forest/65;
+  }
+
+  .fv-faq {
+    @apply border-t border-forest/15;
+  }
+
+  .fv-faq:last-child {
+    @apply border-b;
+  }
+
+  .fv-faq summary {
+    @apply flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg font-semibold text-forest;
+  }
+
+  .fv-faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .fv-faq summary svg {
+    @apply h-5 w-5 shrink-0 transition-transform duration-300;
+  }
+
+  .fv-faq[open] summary svg {
+    transform: rotate(45deg);
+  }
+
+  .fv-faq__answer {
+    @apply max-w-2xl pb-6 text-sm leading-relaxed text-forest/65;
+  }
+
+  .fv-product__media {
+    @apply block aspect-square overflow-hidden bg-cream-dark;
+  }
+
+  .fv-product__media img {
+    @apply h-full w-full object-cover transition duration-500 group-hover:scale-105;
+  }
+
+  .fv-product__placeholder {
+    @apply flex h-full items-center justify-center text-forest/40;
+  }
+
+  .fv-post-card__media {
+    @apply block aspect-[4/3] overflow-hidden bg-cream-dark;
+  }
+
+  .fv-post-card__media img {
+    @apply h-full w-full object-cover transition duration-500 group-hover:scale-105;
+  }
+
+  .fv-page-hero {
+    @apply border-b border-forest/15 bg-paper/60 py-16 sm:py-24;
+  }
+
+  .fv-prose {
+    @apply max-w-3xl text-base leading-relaxed text-forest/80;
+  }
+
+  .fv-prose h2 {
+    @apply mt-12 text-3xl sm:text-4xl;
+  }
+
+  .fv-prose h3 {
+    @apply mt-8 text-2xl;
+  }
+
+  .fv-prose p {
+    @apply mt-5;
+  }
+
+  .fv-prose a {
+    @apply text-terracotta underline decoration-terracotta/30 hover:decoration-terracotta;
+  }
+
+  .fv-prose ul {
+    @apply mt-5 list-disc space-y-2 pl-6;
+  }
+
+  .fv-prose ol {
+    @apply mt-5 list-decimal space-y-2 pl-6;
+  }
+
+  .fv-prose blockquote {
+    @apply mt-8 border-l-2 border-terracotta pl-6 font-display text-2xl leading-snug text-forest;
+  }
+
+  .fv-prose img {
+    @apply my-8 h-auto w-full;
+  }
+
+  .fv-widget__title {
+    @apply mb-3 font-display text-xl text-forest;
+  }
+
+  .fv-empty {
+    @apply border border-dashed border-forest/20 bg-paper/60 p-10 text-center;
+  }
+
+  .fv-pagination .nav-links {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .fv-pagination .page-numbers {
+    @apply inline-flex h-10 min-w-10 items-center justify-center border border-forest/15 px-3 text-sm text-forest no-underline transition hover:border-forest;
+  }
+
+  .fv-pagination .page-numbers.current {
+    @apply bg-forest text-cream;
+  }
+
+  .fv-footer {
+    @apply bg-forest-deep text-cream;
+  }
+
+  .fv-footer a {
+    @apply text-cream/70 no-underline transition hover:text-cream;
+  }
+
+  .fv-footer a.fv-btn--light {
+    @apply text-forest hover:text-forest;
+  }
+
+  .fv-footer__title {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-sage-soft;
+  }
+
+  .fv-footer__list {
+    @apply space-y-2 text-sm;
+  }
+
+  .fv-footer__social {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-cream/15 text-cream/75 no-underline transition hover:border-cream/40 hover:text-cream;
+  }
+
+  .fv-footer__bottom {
+    @apply mt-14 flex flex-col gap-4 border-t border-cream/15 pt-6 text-xs text-cream/65 sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .fv-footer__legal {
+    @apply flex flex-wrap gap-x-5 gap-y-2;
+  }
+
+  .fv-comments .comment-list {
+    @apply space-y-8;
+  }
+
+  .fv-comments .comment-body {
+    @apply border-t border-forest/15 pt-6;
+  }
+
+  .fv-comments .comment-form label {
+    @apply mb-1 block text-sm font-semibold text-forest;
+  }
+
+  .fv-comments .comment-form input:not([type="submit"]),
+  .fv-comments .comment-form textarea {
+    @apply mt-1 w-full border border-forest/20 bg-cream px-4 py-3 text-sm text-forest focus:border-forest focus:outline-none;
+  }
+
+  .fv-comments .comment-form input[type="submit"] {
+    @apply mt-4 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-full bg-forest px-6 py-3 text-sm font-semibold text-cream transition hover:bg-forest-soft;
+  }
+}
+
+@layer utilities {
+  .fv-z-chat {
+    z-index: 60;
+  }
+
+  .fv-animate-in {
+    animation: fv-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .fv-delay-1 {
+    animation-delay: 0.08s;
+  }
+
+  .fv-delay-2 {
+    animation-delay: 0.16s;
+  }
+
+  .fv-delay-3 {
+    animation-delay: 0.24s;
+  }
+
+  .fv-delay-4 {
+    animation-delay: 0.32s;
+  }
+}
+
+@keyframes fv-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+ * WooCommerce prints unlayered CSS after Tailwind. These targeted rules keep
+ * the shared shell intact until Phase 2 replaces the shop/account markup.
+ */
+.fv-logo img {
+  height: 2.5rem;
+  width: auto;
+}
+
+@media (min-width: 640px) {
+  .fv-logo img {
+    height: 3rem;
+  }
+}
+
+.fv-woocommerce-main .woocommerce-products-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgb(31 61 43 / 0.15);
+}
+
+.fv-woocommerce-main .woocommerce-products-header__title {
+  margin: 0;
+  color: var(--color-forest);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.fv-woocommerce-main .woocommerce-breadcrumb {
+  margin-bottom: 1rem;
+  color: rgb(31 61 43 / 0.55);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.fv-woocommerce-main .woocommerce-breadcrumb a {
+  color: rgb(31 61 43 / 0.65);
+  text-decoration: none;
+}
+
+.fv-woocommerce-main .woocommerce-info,
+.fv-woocommerce-main .woocommerce-message,
+.fv-woocommerce-main .woocommerce-error {
+  border: 1px solid rgb(31 61 43 / 0.15);
+  border-radius: 0;
+  background: var(--color-paper);
+  color: var(--color-forest);
+  padding: 1rem 1.25rem;
+}
+
+.fv-woocommerce-main .woocommerce-error {
+  border-color: rgb(168 86 56 / 0.35);
+}
+
+.fv-woocommerce-main .woocommerce-info::before,
+.fv-woocommerce-main .woocommerce-message::before,
+.fv-woocommerce-main .woocommerce-error::before {
+  display: none;
+}
