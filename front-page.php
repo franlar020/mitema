@@ -36,6 +36,16 @@ get_header();
 					</span>
 					<span><strong class="font-semibold text-forest"><?php esc_html_e( 'Dra. Victoria Boratto', 'fauna-del-velazco' ); ?></strong><br><?php esc_html_e( 'Médica Veterinaria', 'fauna-del-velazco' ); ?></span>
 				</p>
+
+				<div class="mt-10">
+					<img
+						class="aspect-[4/5] w-full rounded-[2rem] border border-forest/15 bg-cream p-6 shadow-soft object-cover sm:p-8"
+						src="PEGAR_AQUI_URL_DE_ISMAEL"
+						alt="Foto real de mascota para el hero de Fauna del Velazco"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
 			</div>
 
 			<div class="fv-hero__visual fv-animate-in fv-delay-2">
@@ -106,6 +116,15 @@ get_header();
 			</div>
 
 			<div>
+				<div class="mb-10">
+					<img
+						class="aspect-[4/5] w-full rounded-[2rem] border border-forest/15 bg-cream p-6 shadow-soft object-cover sm:p-8"
+						src="PEGAR_AQUI_URL_DE_ISMAEL"
+						alt="Foto real de mascota para la sección de servicios de Fauna del Velazco"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
 				<article class="fv-service-row group">
 					<div class="fv-service-row__icon"><?php echo fv_icon( 'stethoscope', 'h-5 w-5' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 					<div>
@@ -327,6 +346,15 @@ get_header();
 				<p class="fv-lead mt-6">
 					<?php esc_html_e( 'Fauna del Velazco nace para acompañar a las familias y a sus animales con una atención personalizada. Cada consulta empieza escuchando: qué cambió, cómo vive tu mascota y qué necesita para estar mejor.', 'fauna-del-velazco' ); ?>
 				</p>
+				<div class="mb-10">
+					<img
+						class="aspect-[4/5] w-full rounded-[2rem] border border-forest/15 bg-cream p-6 shadow-soft object-cover sm:p-8"
+						src="PEGAR_AQUI_URL_DE_ISMAEL"
+						alt="Foto real de mascota para la sección de la clínica de Fauna del Velazco"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
 				<blockquote class="fv-detail mt-8 font-display text-2xl leading-snug text-forest">
 					<span class="mb-1 block font-display text-4xl leading-none text-terracotta" aria-hidden="true">&ldquo;</span>
 					<?php esc_html_e( 'La medicina veterinaria también es escuchar.', 'fauna-del-velazco' ); ?>

@@ -141,7 +141,7 @@ function fv_get_shop_url(): string {
  * @return string
  */
 function fv_get_address(): string {
-	return (string) get_theme_mod( 'fv_address', __( 'Velazco, Buenos Aires', 'fauna-del-velazco' ) );
+	return (string) get_theme_mod( 'fv_address', __( 'Plaza José María Velazco Ibarra, barrio de Balvanera (Comuna 3), Ciudad Autónoma de Buenos Aires. Entre Av. Jujuy, calle México, calle Saavedra y Av. Independencia. Espacio público tradicional con áreas de juegos infantiles y sectores deportivos renovados.', 'fauna-del-velazco' ) );
 }
 
 /**
@@ -179,3 +179,39 @@ function fv_get_instagram_url(): string {
 function fv_get_facebook_url(): string {
 	return (string) get_theme_mod( 'fv_facebook', '' );
 }
+
+/**
+ * Render a local Business schema for the clinic address.
+ */
+function fv_local_business_schema(): void {
+	$fv_address = fv_get_address();
+
+	if ( '' === $fv_address ) {
+		return;
+	}
+
+	$fv_schema = array(
+		'@context' => 'https://schema.org',
+		'@type'    => 'AnimalHospital',
+		'name'     => 'Fauna del Velazco',
+		'url'      => home_url( '/' ),
+		'logo'     => esc_url( FV_URI . '/assets/img/logo-mark.svg' ),
+		'image'    => esc_url( FV_URI . '/assets/img/logo-mark.svg' ),
+		'address'  => array(
+			'@type'          => 'PostalAddress',
+			'streetAddress' => $fv_address,
+			'addressLocality' => 'Ciudad Autónoma de Buenos Aires',
+			'addressRegion' => 'CABA',
+			'addressCountry' => 'AR',
+		),
+	);
+
+	$fv_json = wp_json_encode( $fv_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+
+	if ( '' === $fv_json ) {
+		return;
+	}
+
+	echo '<script type="application/ld+json">' . $fv_json . '</script>';
+}
+add_action( 'wp_head', 'fv_local_business_schema', 30 );

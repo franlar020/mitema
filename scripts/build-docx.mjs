@@ -569,7 +569,7 @@ const cover = [
       }),
     ],
   }),
-  eyebrow('Clínica veterinaria · Velazco, Buenos Aires', {
+  eyebrow('Clínica veterinaria · Ciudad Autónoma de Buenos Aires', {
     alignment: AlignmentType.CENTER,
     after: 140,
   }),
@@ -625,7 +625,7 @@ const cover = [
     alignment: AlignmentType.CENTER,
     spacing: { after: 0 },
     children: [
-      textRun('Fauna del Velazco · Clínica veterinaria · Velazco, Buenos Aires', {
+      textRun('Fauna del Velazco · Clínica veterinaria · Ciudad Autónoma de Buenos Aires', {
         size: 15,
         color: C.gray,
       }),
@@ -750,7 +750,7 @@ content.push(
   infoTable([
     ['Clínica', 'Fauna del Velazco'],
     ['Profesional', 'Dra. Victoria Boratto'],
-    ['Ubicación', 'Velazco, Buenos Aires'],
+    ['Ubicación', 'Plaza José María Velazco Ibarra, barrio de Balvanera (Comuna 3), Ciudad Autónoma de Buenos Aires. Entre Av. Jujuy, calle México, calle Saavedra y Av. Independencia. Espacio público tradicional con áreas de juegos infantiles y sectores deportivos renovados.'],
     ['Sitio local', 'https://localhost/webwordpress/'],
     ['Tema', 'mitema · tema WordPress a medida'],
     ['Stack', 'WordPress 7.1.4 · PHP 8.2 · WooCommerce 11.2.2 · Mercado Pago 8.10.0 · Joinchat 6.4.2'],
