@@ -126,15 +126,6 @@ La próxima etapa es la **Fase 2: tienda WooCommerce**:
 6. Fase 5: emails, recordatorios y Joinchat.
 7. Fase 6: QA, accesibilidad, performance y lanzamiento.
 
-El plan completo, el modelo de datos y el flujo de reserva están en [`INIT.md`](INIT.md).
-
-## Documentación
-
-- [`INIT.md`](INIT.md) — plan completo, arquitectura, fases, modelo de datos, flujo de reserva y riesgos.
-- [`AGENTS.md`](AGENTS.md) — reglas de desarrollo, comandos y restricciones críticas.
-- [`docs/Fauna-del-Velazco-Proyecto.docx`](docs/Fauna-del-Velazco-Proyecto.docx) — documento temático para la clienta, con portada, paleta, capturas, fases y flujo de reserva.
-- `npm run docs` — regenera el Word después de cambiar el plan.
-
 ## Notas
 
 - El `screenshot.png` del tema está generado a 1200 × 900 desde la home de Fase 1.
