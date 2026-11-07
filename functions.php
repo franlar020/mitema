@@ -17,4 +17,5 @@ require_once FV_DIR . '/inc/logo.php';
 require_once FV_DIR . '/inc/template-tags.php';
 require_once FV_DIR . '/inc/nav.php';
 require_once FV_DIR . '/inc/customizer.php';
+require_once FV_DIR . '/inc/catalogo-productos.php';
 require_once FV_DIR . '/inc/woocommerce.php';

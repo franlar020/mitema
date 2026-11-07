@@ -6,6 +6,8 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$fv_cart_count = function_exists( 'WC' ) && WC()->cart ? (int) WC()->cart->get_cart_contents_count() : 0;
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -63,6 +65,12 @@ defined( 'ABSPATH' ) || exit;
 		</nav>
 
 		<div class="hidden items-center gap-3 lg:flex">
+			<?php if ( function_exists( 'wc_get_cart_url' ) ) : ?>
+				<a class="fv-cart-link" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Ver carrito, %d productos', 'fauna-del-velazco' ), $fv_cart_count ) ); ?>">
+					<?php echo fv_icon( 'shopping-bag', 'h-5 w-5' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span class="fv-cart-link__count"><?php echo esc_html( (string) $fv_cart_count ); ?></span>
+				</a>
+			<?php endif; ?>
 			<a class="fv-btn fv-btn--primary" href="<?php echo esc_url( fv_get_booking_url() ); ?>">
 				<?php esc_html_e( 'Reservar turno', 'fauna-del-velazco' ); ?>
 				<?php echo fv_icon( 'arrow-right', 'h-4 w-4' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -97,6 +105,12 @@ defined( 'ABSPATH' ) || exit;
 				);
 				?>
 			</nav>
+			<?php if ( function_exists( 'wc_get_cart_url' ) ) : ?>
+				<a class="fv-btn fv-btn--ghost mt-4 w-full" href="<?php echo esc_url( wc_get_cart_url() ); ?>">
+					<?php echo fv_icon( 'shopping-bag', 'h-4 w-4' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<?php echo esc_html( sprintf( __( 'Carrito (%d)', 'fauna-del-velazco' ), $fv_cart_count ) ); ?>
+				</a>
+			<?php endif; ?>
 			<a class="fv-btn fv-btn--primary mt-6 w-full" href="<?php echo esc_url( fv_get_booking_url() ); ?>">
 				<?php esc_html_e( 'Reservar turno', 'fauna-del-velazco' ); ?>
 				<?php echo fv_icon( 'arrow-right', 'h-4 w-4' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>

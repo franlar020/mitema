@@ -6,7 +6,7 @@ Documento maestro del proyecto del tema WordPress para la clínica veterinaria *
 - **Text domain:** `fauna-del-velazco`
 - **Versión:** `0.1.0`
 - **Entorno local:** `https://localhost/webwordpress/`
-- **Estado general:** Fase 0 y Fase 1 completadas. Fase 2 es el siguiente paso.
+- **Estado general:** Fase 0, Fase 1 y Fase 2 completadas. Fase 3 es el siguiente paso. La prueba de pago con Mercado Pago queda pendiente de instalar el plugin.
 - **Documento para clienta:** `docs/Fauna-del-Velazco-Proyecto.docx`
 
 ---
@@ -442,25 +442,24 @@ Entregables:
 
 Criterio de aceptación: el sitio se ve cohesionado, responde en móvil, no tiene errores PHP y las vistas principales funcionan.
 
-### Fase 2 · Tienda WooCommerce — siguiente
+### Fase 2 · Tienda WooCommerce — completada (pago pendiente)
 
 **Objetivo:** integrar la tienda al lenguaje visual sin romper pagos ni bloques.
 
 Entregables:
 
-- `archive-product.php` o wrapper de archivo de productos.
-- Tarjetas de producto.
-- `single-product.php` y ficha de producto.
+- `archive-product.php` con tarjetas, filtros por categoría, ordenamiento y paginación.
+- `single-product.php` con galería, ficha, pestañas y relacionados.
 - Carrito y checkout coherentes con el diseño, sin copiar plantillas críticas.
 - Página “Mi cuenta” estilizada.
 - Avisos, botones, campos y mensajes de WooCommerce.
-- Mini-carrito y contador si corresponde.
-- Categorías, filtros y ordenamiento.
-- Estados vacíos y mensajes de stock.
-- Pruebas con HPOS, checkout blocks y Mercado Pago.
-- Pruebas de creación de orden, pago aprobado, rechazado y reembolso.
+- Contador de carrito en el header con actualización por AJAX.
+- Catálogo de 15 productos en `inc/catalogo-productos.php` y script de siembra idempotente.
+- Imágenes por URL de Medios y recuadros de respaldo.
+- Guía de carga de productos para la clínica.
+- Pruebas con HPOS, checkout blocks y páginas transaccionales.
 
-Criterio de aceptación: se puede comprar un producto de punta a punta con Mercado Pago y la tienda se ve parte del mismo sitio.
+Criterio de aceptación: la tienda se ve parte del mismo sitio, el catálogo está publicado y el flujo de compra funciona. La prueba de pago de punta a punta con Mercado Pago queda pendiente de instalar el plugin en el entorno.
 
 ### Fase 3 · Dominio de reservas
 
@@ -541,7 +540,7 @@ Criterio de aceptación: compra y reserva funcionan en producción, el sitio es 
 ### Completado
 
 - Tema `mitema` activo.
-- Fase 0 y Fase 1 implementadas.
+- Fase 0, Fase 1 y Fase 2 implementadas.
 - Home, página, nota, archivo, búsqueda, 404 y comentarios.
 - Header/footer globales y menú móvil funcional.
 - Sistema de diseño y `theme.json`.
@@ -550,13 +549,19 @@ Criterio de aceptación: compra y reserva funcionan en producción, el sitio es 
 - Personalizador con datos de contacto y redes.
 - Compatibilidad base con WooCommerce/HPOS/bloques.
 - Corrección del logo en páginas WooCommerce.
-- Eliminación de la barra lateral cruda de WooCommerce hasta Fase 2.
+- Eliminación de la barra lateral cruda de WooCommerce.
 - Ajuste de fecha `d/m/Y`, hora `H:i` e inicio de semana lunes.
 - Título del sitio: “Fauna del Velazco” y descripción “Clínica veterinaria en Velazco”.
 - Modo “Coming soon” de WooCommerce desactivado para revisión local.
 - `screenshot.png` actualizado con la home de Fase 1.
 - `README.md` y `AGENTS.md` actualizados.
 - Documento Word de proyecto generado con `npm run docs` y validado en Word/PDF.
+- Archivo de tienda, ficha de producto, categorías, paginación y relacionados.
+- Carrito, checkout y Mi cuenta integrados al diseño.
+- Contador de carrito en el header con actualización por AJAX.
+- 15 productos de demostración publicados con SKU, stock, precios y descripciones.
+- Catálogo de imágenes por URL de Medios y recuadros de respaldo.
+- Guía de carga de productos generada con `npm run docs:productos`.
 
 ### Pendiente de datos de la clienta
 
@@ -568,16 +573,17 @@ Criterio de aceptación: compra y reserva funcionan en producción, el sitio es 
 - Política de cancelación y reprogramación.
 - Feriados y días de cierre.
 - Fotos reales de la clínica y de la Dra. Victoria Boratto.
+- Fotos definitivas de los 15 productos.
 - Textos legales.
 - Preferencia de logo: SVG actual o versión con texto en curvas.
 
 ### Deuda técnica conocida
 
-- Las plantillas de tienda, carrito, checkout y cuenta usan el markup base de WooCommerce hasta Fase 2.
+- Las fotos definitivas de productos se cargan desde Medios y se vinculan por URL en `inc/catalogo-productos.php`.
 - El logo horizontal conserva texto SVG con Georgia; para producción conviene convertirlo a curvas con Fraunces/Manrope.
 - El CTA de reservas apunta al bloque de proceso (`#reservar`); la pantalla real de reserva llega en Fase 3.
-- No hay productos de prueba cargados en la tienda.
-- No hay páginas legales creadas todavía.
+- Hay 15 productos de demostración cargados; las fotos y textos legales siguen pendientes.
+- El pago con Mercado Pago no se probó porque el plugin no está instalado en el entorno local.
 - El sitio local usa certificado SSL autofirmado; para pruebas con `curl` usar `-k` y en Chrome `--ignore-certificate-errors`.
 
 ---
@@ -602,8 +608,8 @@ Criterio de aceptación: compra y reserva funcionan en producción, el sitio es 
 ## 12. Próximos pasos
 
 1. Completar datos reales de contacto y servicios en el Personalizador.
-2. Ejecutar Fase 2: tienda y cuenta WooCommerce.
-3. Crear productos de prueba y validar compra con Mercado Pago sandbox.
+2. Cargar las fotos definitivas de los productos desde Medios y actualizar el catálogo.
+3. Instalar Mercado Pago y validar una compra completa en sandbox.
 4. Implementar CPTs, repositorio y motor de disponibilidad (Fase 3).
 5. Diseñar el wizard de reserva y “Mis turnos”.
 6. Integrar la seña con WooCommerce/Mercado Pago (Fase 4).

@@ -7,8 +7,8 @@ Tema WordPress a medida para la clínica veterinaria **Fauna del Velazco**, diri
 - WordPress 7.1.4
 - PHP 8.2
 - WooCommerce 11.2.2
-- WooCommerce Mercado Pago 8.10.0
-- Joinchat 6.4.2
+- WooCommerce Mercado Pago (a instalar en producción)
+- Joinchat (previsto para la puesta en marcha)
 - Tailwind CSS v4 compilado con npm
 - esbuild para el JavaScript del tema
 - Fuentes variables Fraunces + Manrope autoalojadas
@@ -43,7 +43,13 @@ El documento de proyecto se regenera con:
 npm run docs
 ```
 
-El resultado queda en `docs/Fauna-del-Velazco-Proyecto.docx`. No requiere Word instalado: usa la librería `docx` y los assets PNG de `docs/assets/`.
+La guía de carga de productos se genera con:
+
+```bash
+npm run docs:productos
+```
+
+El resultado queda en `docs/Fauna-del-Velazco-Proyecto.docx` y `docs/Guia-Subida-Productos-Fauna-del-Velazco.docx`. No requiere Word instalado: usa la librería `docx` y los assets PNG de `docs/assets/`. `npm run docs:all` regenera además la guía de imágenes existente.
 
 ## Estructura
 
@@ -54,7 +60,9 @@ mitema/
 ├── header.php                 # Shell, navegación y menú móvil
 ├── footer.php                 # Footer, contacto y wp_footer()
 ├── front-page.php             # Home editorial
-├── page.php                   # Página
+├── archive-product.php        # Archivo de la tienda
+├── single-product.php         # Ficha de producto
+├── page.php                   # Página (incluye carrito, checkout y cuenta)
 ├── single.php                 # Nota / entrada
 ├── archive.php                # Archivos
 ├── search.php                 # Búsqueda
@@ -69,7 +77,10 @@ mitema/
 │   ├── template-tags.php      # Iconos SVG y helpers de contacto
 │   ├── nav.php                # Fallbacks de menús
 │   ├── customizer.php         # Contacto, redes y URL de reservas
-│   └── woocommerce.php        # Compatibilidad WooCommerce/HPOS/bloques
+│   ├── catalogo-productos.php # Catálogo y URLs de imágenes por SKU
+│   └── woocommerce.php        # Integración WooCommerce/HPOS/bloques
+├── tools/
+│   └── sembrar-productos.php  # Alta idempotente de los 15 productos
 ├── template-parts/            # Tarjetas y estados vacíos
 ├── assets/
 │   ├── src/
@@ -77,9 +88,10 @@ mitema/
 │   │   └── js/app.js          # Entrada de JavaScript
 │   ├── dist/                  # Assets compilados (se commitean)
 │   ├── fonts/                 # Fraunces y Manrope variables
-│   └── img/                   # Logo, favicon y línea botánica
+│   └── img/                   # Logo, favicon, línea botánica y placeholder
 ├── docs/
 │   ├── Fauna-del-Velazco-Proyecto.docx
+│   ├── Guia-Subida-Productos-Fauna-del-Velazco.docx
 │   └── assets/                # PNG de logo para el documento
 ├── languages/                 # Traducciones
 ├── INIT.md                    # Plan completo, fases y flujo de reserva
@@ -110,26 +122,47 @@ mitema/
 - **Joinchat:** el tema llama `wp_footer()` y no aplica `overflow: hidden` global, por lo que el widget flotante no se bloquea.
 - **CSS:** los estilos globales de WordPress y WooCommerce no usan capas; los ajustes críticos viven al final de `app.css`, fuera de `@layer`.
 
+## Productos y fotografías
+
+El catálogo de demostración vive en `inc/catalogo-productos.php`, indexado por SKU. Cada entrada define nombre, categoría, precio, descripciones, stock, destacado y la URL de la imagen.
+
+Para crear los productos que falten:
+
+```bash
+/c/xampp/php/php.exe tools/sembrar-productos.php
+```
+
+El script es idempotente: no duplica ni sobreescribe productos existentes. Para cambiar una foto, subirla a **Medios → Añadir nuevo**, copiar la URL del archivo y reemplazarla en la línea `imagen` del SKU correspondiente. La guía completa para el equipo de la clínica está en `docs/Guia-Subida-Productos-Fauna-del-Velazco.docx`.
+
 ## Fase actual
 
-**Fases 0 y 1 completadas.** El tema está activo, la home y las vistas institucionales funcionan en desktop y móvil, y la tienda ya usa el shell visual del sitio.
+**Fases 0, 1 y 2 completadas.** El tema está activo, la home y las vistas institucionales funcionan en desktop y móvil, y la tienda tiene catálogo, ficha de producto, carrito, checkout y Mi cuenta integrados al diseño.
 
-La próxima etapa es la **Fase 2: tienda WooCommerce**:
+La Fase 2 incluyó:
 
-1. Archivo de productos, tarjetas y ficha de producto.
-2. Carrito, checkout y Mi cuenta integrados al diseño.
-3. Pruebas de compra con Mercado Pago.
-4. Fase 3: CPTs, agenda, disponibilidad y wizard de reserva.
-5. Fase 4: seña con WooCommerce + Mercado Pago.
-6. Fase 5: emails, recordatorios y Joinchat.
-7. Fase 6: QA, accesibilidad, performance y lanzamiento.
+1. Archivo de productos, tarjetas, filtros por categoría y ficha de producto.
+2. 15 productos de demostración publicados con SKU, stock, precios y descripciones.
+3. Imágenes por URL de Medios, con recuadros de respaldo y placeholder del tema.
+4. Carrito, checkout y Mi cuenta integrados sin copiar plantillas críticas.
+5. Contador de carrito en el header con actualización por AJAX.
+6. Guía de carga de productos y documento de proyecto actualizados.
+
+La próxima etapa es la **Fase 3: reservas**:
+
+1. CPTs `fv_paciente`, `fv_servicio` y `fv_turno`.
+2. Repositorio y motor de disponibilidad.
+3. Wizard de reserva y perfil de mascota.
+4. Fase 4: seña con WooCommerce + Mercado Pago.
+5. Fase 5: emails, recordatorios y Joinchat.
+6. Fase 6: QA, accesibilidad, performance y lanzamiento.
 
 ## Notas
 
 - El `screenshot.png` del tema está generado a 1200 × 900 desde la home de Fase 1.
 - El sitio local está en `https://localhost/webwordpress/` con SSL autofirmado; para pruebas con `curl` usar `-k`.
 - El modo “Coming soon” de WooCommerce está desactivado en local para revisar la tienda.
-- La tienda, el carrito, el checkout y Mi cuenta usan el markup base de WooCommerce hasta la Fase 2.
+- La tienda tiene 15 productos de demostración; las fotos definitivas se cargan desde Medios y se vinculan en `inc/catalogo-productos.php`.
+- El pago con Mercado Pago todavía no se probó porque el plugin no está instalado en el entorno local.
 - Los CTA de reserva apuntan a `#reservar`; la pantalla real de reserva llega en la Fase 3.
 - El logo se puede reemplazar desde **Apariencia → Personalizar → Identidad del sitio → Logo**.
 - WordPress no permite subir SVG por defecto. El tema incluye sus SVG y los usa como fallback; para subir un logo propio desde el admin, usar PNG o WebP, o instalar un plugin de sanitización SVG.

@@ -618,7 +618,7 @@ const cover = [
     ['Preparado para', 'Dra. Victoria Boratto · Fauna del Velazco'],
     ['Documento', 'Proyecto digital, plan de fases y flujo de reserva'],
     ['Fecha', 'Noviembre 2026'],
-    ['Estado', 'Fases 0 y 1 completadas · Fase 2 en preparación'],
+    ['Estado', 'Fases 0, 1 y 2 completadas · Fase 3 siguiente'],
   ]),
   spacer(260),
   new Paragraph({
@@ -674,7 +674,7 @@ content.push(
   }),
   rule(C.terracotta, 8, 220),
   paragraph(
-    'Este documento reúne el plan completo del proyecto, el estado actual y el flujo de reserva. Está pensado para revisar las decisiones antes de avanzar a la tienda y a la agenda.',
+    'Este documento reúne el plan completo del proyecto, el estado actual y el flujo de reserva. Está pensado para revisar las decisiones de la tienda ya implementada y el inicio de la agenda.',
     { size: 21, after: 200 }
   ),
   makeTable(null, contentsRows, [50, 50], {
@@ -712,7 +712,7 @@ content.push(
     { after: 140 }
   ),
   paragraph(
-    'La primera etapa resolvió la identidad visual y las vistas institucionales. La segunda integra la tienda de WooCommerce. Después se implementa la agenda, la reserva online y el cobro de la seña con Mercado Pago.',
+    'La primera etapa resolvió la identidad visual y las vistas institucionales. La segunda integró la tienda de WooCommerce con catálogo, ficha, carrito, checkout y Mi cuenta. La próxima etapa es la agenda, la reserva online y el cobro de la seña con Mercado Pago.',
     { after: 180 }
   ),
   makeTable(
@@ -727,7 +727,7 @@ content.push(
   spacer(160),
   callout(
     'Estado actual',
-    'Fases 0 y 1 completadas. El tema está activo, la home y las vistas principales funcionan en desktop y móvil, y la tienda ya usa el shell visual del sitio. La próxima etapa es la Fase 2: tienda WooCommerce.',
+    'Fases 0, 1 y 2 completadas. El tema está activo, la home y las vistas principales funcionan en desktop y móvil, y la tienda ya tiene catálogo, ficha de producto, carrito, checkout y Mi cuenta integrados al diseño. La próxima etapa es la Fase 3: reservas.',
     { fill: C.cream, accent: C.sage }
   ),
   heading2('La decisión central'),
@@ -753,11 +753,11 @@ content.push(
     ['Ubicación', 'Plaza José María Velazco Ibarra, barrio de Balvanera (Comuna 3), Ciudad Autónoma de Buenos Aires. Entre Av. Jujuy, calle México, calle Saavedra y Av. Independencia. Espacio público tradicional con áreas de juegos infantiles y sectores deportivos renovados.'],
     ['Sitio local', 'https://localhost/webwordpress/'],
     ['Tema', 'mitema · tema WordPress a medida'],
-    ['Stack', 'WordPress 7.1.4 · PHP 8.2 · WooCommerce 11.2.2 · Mercado Pago 8.10.0 · Joinchat 6.4.2'],
+    ['Stack', 'WordPress 7.1.4 · PHP 8.2 · WooCommerce 11.2.2 · Mercado Pago y Joinchat a instalar en producción'],
     ['Frontend', 'Tailwind CSS v4 compilado con npm · esbuild · fuentes autoalojadas'],
     ['Idioma y moneda', 'Español Argentina · ARS'],
     ['Zona horaria', 'America/Argentina/Buenos_Aires'],
-    ['Estado', 'Fases 0 y 1 completadas · Fase 2 en preparación'],
+    ['Estado', 'Fases 0, 1 y 2 completadas · Fase 3 siguiente'],
   ]),
   spacer(220),
   new Paragraph({
@@ -904,7 +904,7 @@ content.push(
       ['Plantillas', 'Página, nota, archivo, búsqueda, 404 y comentarios.'],
       ['Design system', 'Tokens, componentes, tipografía, iconos y responsive.'],
       ['Customizer', 'Teléfono, WhatsApp, email, dirección, horarios, redes y URL de reservas.'],
-      ['WooCommerce', 'Compatibilidad HPOS, checkout blocks y wrappers del tema.'],
+      ['WooCommerce', 'Catálogo, ficha, carrito, checkout, Mi cuenta, HPOS y checkout blocks.'],
       ['Reservas (futuro)', 'CPT, repositorio, disponibilidad, wizard, pagos y recordatorios.'],
     ],
     [26, 74]
@@ -961,7 +961,7 @@ content.push(
       ['Notas', 'Single de blog, fecha, contenido y comentarios.'],
       ['Archivos y búsqueda', 'Listados, tarjetas, estados vacíos y buscador.'],
       ['404', 'Página de error con mensaje propio y accesos útiles.'],
-      ['Tienda', 'Shell visual, título y avisos; el catálogo se completa en Fase 2.'],
+      ['Tienda', 'Catálogo con 15 productos, ficha, carrito, checkout y Mi cuenta integrados al diseño.'],
     ],
     [26, 74]
   ),
@@ -1226,11 +1226,12 @@ content.push(
       [
         '2 · Tienda WooCommerce',
         [
-          'Archivo de productos, tarjetas, ficha de producto y categorías.',
-          'Carrito, checkout y Mi cuenta integrados al diseño.',
-          'Avisos, botones, campos y estados vacíos. Pruebas con Mercado Pago.',
+          'Archivo, tarjetas, filtros por categoría, ficha de producto y relacionados.',
+          'Carrito, checkout y Mi cuenta integrados al diseño, sin copiar plantillas críticas.',
+          '15 productos de demostración, imágenes por URL de Medios y contador de carrito.',
+          'Prueba de pago pendiente de instalar el plugin de Mercado Pago.',
         ],
-        'Siguiente',
+        'Completada',
       ],
       [
         '3 · Reservas',
@@ -1292,7 +1293,7 @@ content.push(
     [46, 54]
   ),
   paragraph(
-    'El camino crítico es Fase 2 → Fase 3 → Fase 4. La Fase 5 puede empezar en paralelo cuando los estados del turno y los emails estén definidos.',
+    'El camino crítico es Fase 3 → Fase 4. La Fase 5 puede empezar en paralelo cuando los estados del turno y los emails estén definidos.',
     { after: 160 }
   ),
   heading2('Cómo trabajamos cada fase'),
@@ -1328,6 +1329,11 @@ content.push(
     'Formato de fecha d/m/Y, hora H:i e inicio de semana lunes.',
     'Título del sitio “Fauna del Velazco” y modo “Coming soon” desactivado para revisión.',
     'Screenshot del tema actualizado con la home de Fase 1.',
+    'Tienda WooCommerce: archivo, tarjetas, filtros por categoría, ficha y relacionados.',
+    'Carrito, checkout y Mi cuenta integrados al diseño, sin copiar plantillas críticas.',
+    '15 productos de demostración publicados con SKU, stock, precios y descripciones.',
+    'Catálogo de imágenes por URL de Medios, con recuadros de respaldo por producto.',
+    'Acceso al carrito con contador en el header y actualización por AJAX.',
   ].map((item) => bullet(item)),
   heading2('Pendiente de datos'),
   makeTable(
@@ -1338,22 +1344,24 @@ content.push(
       ['Instagram y Facebook', 'Footer y prueba social.'],
       ['Servicios, duraciones y precios', 'Wizard, agenda y seña.'],
       ['Monto de la seña y política de cancelación', 'Checkout y reglas del turno.'],
-      ['Fotos reales y textos legales', 'Home, páginas legales y lanzamiento.'],
+      ['Fotos definitivas de productos', 'Catálogo, tarjetas y ficha de producto.'],
+      ['Textos legales', 'Privacidad, términos y lanzamiento.'],
     ],
     [46, 54]
   ),
   heading2('Deuda técnica conocida'),
   ...[
-    'La tienda, el carrito, el checkout y Mi cuenta usan el markup base de WooCommerce hasta la Fase 2.',
+    'Las fotos definitivas de productos se cargan desde Medios y se vinculan por URL en inc/catalogo-productos.php.',
     'El logo horizontal conserva texto SVG con Georgia; para producción conviene convertirlo a curvas con Fraunces/Manrope.',
     'Los CTA de reserva apuntan al bloque de proceso (#reservar); la pantalla real de reserva llega en Fase 3.',
-    'No hay productos de prueba cargados ni páginas legales creadas.',
+    'Hay 15 productos de demostración cargados; las páginas legales siguen pendientes.',
+    'El pago con Mercado Pago no se probó todavía porque el plugin no está instalado en el entorno local.',
     'El entorno local usa SSL autofirmado; para pruebas con curl usar -k y en Chrome --ignore-certificate-errors.',
   ].map((item) => bullet(item)),
   spacer(80),
   callout(
     'Sitio local',
-    'El tema está disponible en https://localhost/webwordpress/ para revisión. La tienda todavía no tiene productos: el objetivo de la Fase 2 es cargar el catálogo real y validar una compra con Mercado Pago en sandbox.',
+    'El tema está disponible en https://localhost/webwordpress/ para revisión. La tienda ya tiene 15 productos de demostración y el flujo de compra integrado. Falta cargar las fotos definitivas y validar una compra con Mercado Pago en sandbox.',
     { fill: C.paper, accent: C.sage }
   )
 );
@@ -1406,8 +1414,8 @@ content.push(
   ...sectionHeading('13', 'Próximos pasos'),
   ...[
     'Completar los datos reales de contacto, servicios, precios y políticas.',
-    'Ejecutar la Fase 2: tienda, ficha de producto, carrito, checkout y Mi cuenta.',
-    'Cargar productos de prueba y validar una compra con Mercado Pago sandbox.',
+    'Cargar las fotos definitivas de los productos desde Medios y actualizar el catálogo.',
+    'Instalar Mercado Pago y validar una compra completa en sandbox.',
     'Implementar los CPT, el repositorio y el motor de disponibilidad (Fase 3).',
     'Diseñar el wizard de reserva, Mis mascotas y Mis turnos.',
     'Integrar la seña con WooCommerce/Mercado Pago (Fase 4).',
@@ -1430,12 +1438,12 @@ content.push(
   spacer(120),
   callout(
     'Siguiente hito',
-    'Fase 2 · Tienda WooCommerce. Validar catálogo, precios, envíos, retiro en clínica y una compra completa con Mercado Pago en sandbox.',
+    'Fase 3 · Reservas. Implementar los CPT de pacientes, servicios y turnos, el repositorio y el motor de disponibilidad.',
     { fill: C.cream, accent: C.terracotta }
   ),
   spacer(120),
   paragraph(
-    'El proyecto ya tiene una base visual y técnica sólida. El siguiente paso es convertir esa base en una tienda operativa y, después, en una agenda real que ordene el día de la clínica y cuide la experiencia de cada familia.',
+    'El proyecto ya tiene una tienda operativa y una base visual y técnica sólida. El siguiente paso es convertir esa tienda en una agenda real que ordene el día de la clínica y cuide la experiencia de cada familia.',
     { after: 120 }
   )
 );
@@ -1603,7 +1611,7 @@ const header = new Header({
                   alignment: AlignmentType.RIGHT,
                   spacing: { after: 0 },
                   children: [
-                    textRun('FASE 1 · 2026', {
+                    textRun('FASE 2 · 2026', {
                       size: 13,
                       bold: true,
                       color: C.terracottaInk,

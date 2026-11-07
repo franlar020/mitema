@@ -259,7 +259,7 @@ get_header();
 						<article class="fv-product group">
 							<a class="fv-product__media" href="<?php echo esc_url( get_permalink( $fv_product->get_id() ) ); ?>">
 								<?php
-								$fv_image = get_the_post_thumbnail(
+								$fv_image = fv_imagen_producto_html(
 									$fv_product->get_id(),
 									'fv-card',
 									array(

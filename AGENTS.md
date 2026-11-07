@@ -23,6 +23,8 @@ npm install
 npm run build       # required after changing CSS classes, app.js or before delivery
 npm run dev:css     # Tailwind watcher
 npm run dev:js      # esbuild watcher
+npm run docs        # regenerate the project Word document
+npm run docs:productos # regenerate the product upload guide
 ```
 
 PHP lint:
@@ -33,6 +35,12 @@ for f in $(find . -path ./node_modules -prune -o -name '*.php' -print); do
 done
 ```
 
+Seed the 15 demo products (idempotent, by SKU):
+
+```bash
+/c/xampp/php/php.exe tools/sembrar-productos.php
+```
+
 WordPress bootstrap example:
 
 ```bash
@@ -41,14 +49,17 @@ WordPress bootstrap example:
 
 ## Architecture
 
-- `functions.php` loads `inc/setup.php`, `enqueue.php`, `logo.php`, `template-tags.php`, `nav.php`, `customizer.php`, `woocommerce.php`.
-- Templates: `header.php`, `footer.php`, `front-page.php`, `page.php`, `single.php`, `archive.php`, `search.php`, `404.php`, `searchform.php`, `comments.php`, `template-parts/`.
+- `functions.php` loads `inc/setup.php`, `enqueue.php`, `logo.php`, `template-tags.php`, `nav.php`, `customizer.php`, `catalogo-productos.php`, `woocommerce.php`.
+- Templates: `header.php`, `footer.php`, `front-page.php`, `page.php`, `single.php`, `archive.php`, `search.php`, `404.php`, `searchform.php`, `comments.php`, `archive-product.php`, `single-product.php`, `template-parts/`.
 - Design source: `assets/src/css/app.css` (Tailwind v4) and `assets/src/js/app.js` (esbuild).
 - Compiled assets: `assets/dist/app.css` and `assets/dist/app.js`. They are committed and enqueued; never load a CDN.
 - Fonts: self-hosted variable Fraunces + Manrope in `assets/fonts/`.
 - `theme.json` mirrors editor tokens and block styles.
 - Customizer fields: phone, WhatsApp, email, address, hours, booking URL, Instagram, Facebook (`inc/customizer.php`).
-- WooCommerce integration is in `inc/woocommerce.php`; store templates are intentionally deferred to Phase 2.
+- WooCommerce integration is in `inc/woocommerce.php`; store templates live in `archive-product.php` and `single-product.php`.
+- Product catalog and image URLs by SKU: `inc/catalogo-productos.php`.
+- Product seed script: `tools/sembrar-productos.php` (idempotent, by SKU).
+- Image workflow: upload to Media, copy the file URL, replace `imagen` in the catalog. `attachment_url_to_postid()` resolves it through `woocommerce_product_get_image_id`.
 
 ## Design rules
 
@@ -86,12 +97,14 @@ WordPress bootstrap example:
 
 ## Current status
 
-- Phase 0 and Phase 1 are complete.
+- Phase 0, Phase 1 and Phase 2 are complete.
+- The store has 15 published demo products across Alimentos, Accesorios and Cuidado.
+- Product images are linked by URL from the catalog; placeholders render until photos are uploaded.
+- Cart, checkout and My Account are styled without copying critical WooCommerce templates.
 - Frontend verified at desktop and mobile widths.
 - WooCommerce “Coming soon” is disabled locally for review.
-- Shop/account/cart/checkout still use base WooCommerce markup until Phase 2.
-- Theme screenshot `screenshot.png` is generated from the Phase 1 home.
-- Next: Phase 2 (WooCommerce templates), then Phase 3 (booking domain).
+- Mercado Pago is not installed locally; end-to-end payment testing is pending.
+- Next: Phase 3 (booking domain).
 
 ## Documentation
 
